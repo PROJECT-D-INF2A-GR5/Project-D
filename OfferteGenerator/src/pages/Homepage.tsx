@@ -1,6 +1,6 @@
-import React from 'react'
 import Header from '../components/Header'
 import OfferteGenerator from '../components/OfferteGenerator'
+import Chatbot from '../pages/Chatbot'
 
 const Homepage = () => {
   return (
