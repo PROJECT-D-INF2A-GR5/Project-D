@@ -24,8 +24,8 @@ const OffertePage: React.FC = () => {
           <ul>
             {offerteData.stappen.map((stap: string, index: number) => (
               <li key={index} className="mb-2">
-                <span className="font-semibold">{stap}: </span>
-                {offerteData.selectedOptions[index]}
+                <span className="font-semibold"> - {offerteData.selectedOptions[index]} </span>
+                
               </li>
             ))}
           </ul>

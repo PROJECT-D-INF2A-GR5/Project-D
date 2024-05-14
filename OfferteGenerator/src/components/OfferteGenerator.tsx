@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface Product {
   stappen: string[];
@@ -68,7 +68,7 @@ const OfferteGenerator: React.FC = () => {
 
 
   return (
-    <div className='bg-gray-600 text-white p-4 w-3/5 h-1/2 rounded-md'>
+    <div className='bg-gray-400 text-white p-4 w-2/5 px-8 h-1/2 rounded-md'>
       <h1 className='text-lg font-bold text-center underline'>Offerte Generator</h1>
   
       {!product && (
