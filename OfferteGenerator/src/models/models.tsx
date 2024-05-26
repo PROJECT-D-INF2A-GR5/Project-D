@@ -66,7 +66,7 @@ interface User {
     insetCutout: number;
     roughCutout: number;
     faucetHole: number;
-    soapDispenser: number;
+    soapDispenser: boolean;
     drillHolesPerPiece: number;
     wallSocketPricePerPiece: number;
     backPanelPricePerMeter: number;
