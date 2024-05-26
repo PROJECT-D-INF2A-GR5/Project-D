@@ -21,8 +21,8 @@ const OfferteGen: React.FC = () => {
 
   const initialState = {
     materiaal: 'Graniet',
-    lengte: 0,
-    breedte: 0,
+    lengte: 1,
+    breedte: 1,
     spatrand: false,
     vensterbank: false,
     boorGaten: 0,
@@ -121,7 +121,6 @@ const OfferteGen: React.FC = () => {
         <div className='flex-col flex gap-4'>
           <h2 className='text-lg font-semibold'>Wilt u een spatrand toevoegen?</h2>
           <label className='flex gap-2 items-center'>
-          Spatrand:
           <Switch spanText='Een spatrand toegevoegd aan het keukenblad.' toggleValue={formData.spatrand} onToggle={() => setFormData({ ...formData, spatrand: !formData.spatrand })} />
           </label>
         </div>
@@ -133,7 +132,7 @@ const OfferteGen: React.FC = () => {
             <div className='flex-col flex gap-4'>
               <h2 className='text-lg font-semibold'>Wilt u een vensterbank toevoegen?</h2>
               <label className='flex gap-2 items-center'>
-              Vensterbank:
+
               <Switch spanText='Een vensterbank toegevoegd aan het keukenblad.' toggleValue={formData.vensterbank} onToggle={() => setFormData({ ...formData, vensterbank: !formData.vensterbank })} />
               </label>
           </div>
@@ -160,7 +159,7 @@ const OfferteGen: React.FC = () => {
         <div className='flex-col flex gap-4'>
         <h2 className='text-lg font-semibold'>Wilt u een contactdoos toevoegen?</h2>
               <label className='flex gap-2 items-center'>
-                WCD:
+
                 <Switch spanText='Een WCD toegevoegd aan het keukenblad.' toggleValue={formData.WCD} onToggle={() => setFormData({ ...formData, WCD: !formData.WCD })} />
               </label>
         </div>
@@ -171,7 +170,7 @@ const OfferteGen: React.FC = () => {
           <div className='flex-col flex gap-4'>
             <h2 className='text-lg font-semibold'>Wilt u randafwerking toevoegen aan het keukenblad?</h2>
             <label className='flex gap-2 items-center'>
-            Randafwerking:
+
             <Switch spanText='Keukenblad randafwerking toegevoegd.' toggleValue={formData.randAfwerking} onToggle={() => setFormData({ ...formData, randAfwerking: !formData.randAfwerking })} />
             </label>
           </div>
@@ -182,7 +181,7 @@ const OfferteGen: React.FC = () => {
           <div className='flex-col flex gap-4'>
             <h2 className='text-lg font-semibold'>Wilt u een wasbak in het keukenblad?</h2>
             <label className='flex gap-2 items-center'>
-              Wasbak:
+
               <Switch spanText='Wasbak toegevoegd aan het keukenblad.' toggleValue={formData.Wasbak} onToggle={() => setFormData({ ...formData, Wasbak: !formData.Wasbak })} />
             </label>
         </div>
@@ -192,7 +191,6 @@ const OfferteGen: React.FC = () => {
           <div className='flex-col flex gap-4'>
           <h2 className='text-lg font-semibold'>Wilt u een zeepdispenser toevoegen aan het keukenblad?</h2>
           <label className='flex gap-2 items-center'>
-                  Zeepdispenser:
                   <Switch spanText='Zeepdispenser toegevoegd aan het keukenblad.' toggleValue={formData.zeepDispenser} onToggle={() => setFormData({ ...formData, zeepDispenser: !formData.zeepDispenser })} />
                 </label>
           </div>

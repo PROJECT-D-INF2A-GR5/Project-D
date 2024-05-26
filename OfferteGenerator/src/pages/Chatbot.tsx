@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import "../App.css"
+import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 
 
 declare var process: {
@@ -44,6 +44,7 @@ const systemMessage = { //  Explain things like you're talking to a software pro
   Wilt u een achterwand? (Ja/Nee)
   Stel de vragen in deze volgorde en als de antwoorden niet voldoen aan de verwachtingen, vraag dan om een correct antwoord.
   Als alle vragen beantwoordt zijn geef de gebruiker een bericht met de all variablen in een object met de juiste waardes op de volgende manier: 
+  BEANTWOORDT ALTIJD NA ALLE VRAGEN OP PRECIES DEZE MANIER HET IS HEEL BELANGRIJK VOOR DE REST VAN DE APPLICATIE DUS LET GOED OP: 
   Dit is uw ingevulde offerte:
   {
     materiaal: '',
@@ -241,7 +242,9 @@ function Chatbot() {
   }, [messages]);
 
   return (
-    <div className="App">
+    <>
+    <Header/>
+    <div className="App w-screen h-screen flex justify-center items-center bg-gray-100 mt-8">
       <div style={{ position:"relative", height: "600px", width: "700px"  }}>
         <MainContainer>
           <ChatContainer>       
@@ -253,7 +256,14 @@ function Chatbot() {
               {messages.map((message:any, i:any) => {
                 //console.log(message)
                 
-                return message.sender == "ChatGPT" ? <Message key={i} model={message} className='user_message'/> : <Message key={i} model={message}/>
+                return message.sender == "ChatGPT" ? <Message key={i} model={{
+                  message: message.message,
+                  position: 0,
+                  sender: message.sender,
+                  sentTime: new Date().toLocaleTimeString(),
+                  direction: "incoming"
+                
+                }} /> : <Message key={i} model={message} />
                 
               })}
             </MessageList>
@@ -262,6 +272,7 @@ function Chatbot() {
         </MainContainer>
       </div>
     </div>
+    </>
   )
 }
 

@@ -20,7 +20,20 @@ interface KeukenbladFormData {
 }
 
 const OffertePage: React.FC = () => {
-  const [offerteData, setOfferteData] = useState<KeukenbladFormData>();
+  const [offerteData, setOfferteData] = useState<KeukenbladFormData>({
+    materiaal: '',
+    lengte: 0,
+    breedte: 0,
+    spatrand: false,
+    vensterbank: false,
+    boorGaten: 0,
+    WCD: false,
+    randAfwerking: false,
+    Wasbak: false,
+    zeepDispenser: false,
+    achterWand: false,
+    prijs: 0
+  });
 
   useEffect(() => {
     const data = localStorage.getItem('offerteData');
@@ -29,6 +42,12 @@ const OffertePage: React.FC = () => {
       localStorage.removeItem('offerteData'); // Verwijder offerteData na gebruik
     }
   }, []);
+
+  const formatter = new Intl.NumberFormat('nl-NL', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2
+  })
 
   const generatePDF = () => {
     const doc = new jsPDF();
@@ -51,7 +70,7 @@ const OffertePage: React.FC = () => {
     doc.text( `Wasbak: ${offerteData?.Wasbak ? "Ja" : "Nee"}`, 10, 100);
     doc.text( `Zeepdispenser: ${offerteData?.zeepDispenser ? "Ja" : "Nee"}`, 10, 110);
     doc.text( `Achterwand: ${offerteData?.achterWand ? "Ja" : "Nee"}`, 10, 120);
-    doc.text( `Prijs: ${offerteData?.prijs}`, 10, 130);
+    doc.text( `Prijs: ${formatter.format(offerteData.prijs)}`, 10, 130);
 
 
     // Generate the PDF and trigger the download
@@ -136,7 +155,7 @@ const OffertePage: React.FC = () => {
             </svg>}</p>
 
             <h2 className="text-xl font-semibold mt-4">Prijs</h2>
-            <p  className='flex gap-2' >€ {offerteData.prijs}</p>
+            <p  className='flex gap-2' >{formatter.format(offerteData.prijs)}</p>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
               onClick={() => {
