@@ -20,12 +20,12 @@ interface KeukenbladFormData {
 const OfferteGen: React.FC = () => {
 
   const initialState = {
-    materiaal: 'Graniet',
+    materiaal: 'Noble Desiree Grey Matt',
     lengte: 1,
     breedte: 1,
     spatrand: false,
     vensterbank: false,
-    boorGaten: 0,
+    boorGaten: 1,
     WCD: false,
     randAfwerking: false,
     Wasbak: false,
@@ -78,8 +78,7 @@ const OfferteGen: React.FC = () => {
   }
 
   return (
-    <div className='flex flex-col items-center justify-center w-full h-screen bg-gray-100 gap-10'>
-      <h1 className='text-lg font-semibold text-center'>Offerte Generator</h1>
+    <div className='flex flex-col items-center justify-center w-full h-screen  gap-10'>
 
       <form onSubmit={(e) => {
             e.preventDefault(); 
@@ -87,15 +86,15 @@ const OfferteGen: React.FC = () => {
             localStorage.setItem('offerteData', JSON.stringify(formData));
             navigate('/offerte')
       }}
-      className='flex h-1/3 flex-col justify-between w-1/3 p-4 bg-white rounded-md shadow-md text-lg'
+      className='flex h-1/3 flex-col justify-between min-w-[400px] w-[45%] p-4 bg-white rounded-md shadow-md text-lg'
       >
 
       {currForm === 0 && (
         <div className='flex-col flex gap-4'>
           <h2 className='text-lg font-semibold' >Van welk materiaal wilt u het keukenblad?</h2>
-          <label>
+          <label className='flex gap-2'>
             Materiaal:
-            <select className='border-2' value={formData.materiaal} onChange={(e) => setFormData({ ...formData, materiaal: e.target.value })}>
+            <select className='border-2 rounded-md' value={formData.materiaal} onChange={(e) => setFormData({ ...formData, materiaal: e.target.value })}>
               <option value="Noble Desiree Grey Matt">Noble Desiree Grey Matt</option>
               <option value="Noble Carrara Verzoet">Noble Carrara Verzoet</option>
               <option value="Taurus Terazzo White Verzoet">Taurus Terazzo White Verzoet</option>
@@ -104,15 +103,27 @@ const OfferteGen: React.FC = () => {
             </select>
           </label>
 
-            <label className='flex gap-2'>
-              Lengte totaal in meter:
-              <input type='number' className='border-2' value={formData.lengte} onChange={(e) => setFormData({ ...formData, lengte: Number(e.target.value) })} />
-            </label>
-            
-            <label className='flex gap-2'>
-              Breedte totaal in meter :
-              <input type='number' className='border-2' value={formData.breedte} onChange={(e) => setFormData({ ...formData, breedte: Number(e.target.value) })} />
-            </label>
+          <label className='flex gap-2 '>
+            Lengte totaal in meter:
+            <input 
+              type='number' 
+              step='0.1' 
+              className='border-2 rounded-md px-1' 
+              value={formData.lengte} 
+              onChange={(e) => setFormData({ ...formData, lengte: parseFloat(e.target.value) })} 
+            />
+          </label>
+
+          <label className='flex gap-2'>
+            Breedte totaal in meter:
+            <input 
+              type='number' 
+              step='0.1' 
+              className='border-2 rounded-md px-1' 
+              value={formData.breedte} 
+              onChange={(e) => setFormData({ ...formData, breedte: parseFloat(e.target.value)})} 
+            />
+          </label>
         </div>
 
       )}
@@ -290,6 +301,7 @@ const OfferteGen: React.FC = () => {
     </div>
 
       </form>
+
     </div>
   )
 };

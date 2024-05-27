@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import { jsPDF } from 'jspdf';
- 
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 
 interface KeukenbladFormData {
@@ -17,6 +17,15 @@ interface KeukenbladFormData {
   zeepDispenser: boolean;
   achterWand: boolean;
   prijs: number;
+}
+
+declare module 'jspdf' {
+  interface jsPDF {
+      autoTable: (options: any) => void;
+      lastAutoTable: {
+          finalY: number;
+      };
+  }
 }
 
 const OffertePage: React.FC = () => {
@@ -51,37 +60,51 @@ const OffertePage: React.FC = () => {
 
   const generatePDF = () => {
     const doc = new jsPDF();
-
-
-    // Add content to the PDF
+  
+    // Add title to the PDF
     doc.setFont('Helvetica', 'bold');
     doc.setFontSize(22);
     doc.text('Uw offerte', 10, 10);
-    doc.setFontSize(14);
-    doc.setFont('Helvetica', 'semibold');
-    doc.text( `Materiaal: ${offerteData?.materiaal}`, 10, 20);
-    doc.text( `Lengte: ${offerteData?.lengte}`, 10, 30);
-    doc.text( `Breedte: ${offerteData?.breedte}`, 10, 40);
-    doc.text( `Spatrand: ${offerteData?.spatrand ? "Ja" : "Nee"}`, 10, 50);
-    doc.text( `Vensterbank: ${offerteData?.vensterbank ? "Ja" : "Nee"}`, 10, 60);
-    doc.text( `Boorgaten: ${offerteData?.boorGaten}`, 10, 70);
-    doc.text( `WCD: ${offerteData?.WCD ? "Ja" : "Nee"}`, 10, 80);
-    doc.text( `Randafwerking: ${offerteData?.randAfwerking ? "Ja" : "Nee"}`, 10, 90);
-    doc.text( `Wasbak: ${offerteData?.Wasbak ? "Ja" : "Nee"}`, 10, 100);
-    doc.text( `Zeepdispenser: ${offerteData?.zeepDispenser ? "Ja" : "Nee"}`, 10, 110);
-    doc.text( `Achterwand: ${offerteData?.achterWand ? "Ja" : "Nee"}`, 10, 120);
-    doc.text( `Prijs: ${formatter.format(offerteData.prijs)}`, 10, 130);
-
-
+  
+    // Prepare the data for the table
+    const data = [
+      ['Materiaal', offerteData?.materiaal || ''],
+      ['Lengte', offerteData?.lengte || ''],
+      ['Breedte', offerteData?.breedte || ''],
+      ['Spatrand', offerteData?.spatrand ? 'Ja' : 'Nee'],
+      ['Vensterbank', offerteData?.vensterbank ? 'Ja' : 'Nee'],
+      ['Boorgaten', offerteData?.boorGaten || ''],
+      ['WCD', offerteData?.WCD ? 'Ja' : 'Nee'],
+      ['Randafwerking', offerteData?.randAfwerking ? 'Ja' : 'Nee'],
+      ['Wasbak', offerteData?.Wasbak ? 'Ja' : 'Nee'],
+      ['Zeepdispenser', offerteData?.zeepDispenser ? 'Ja' : 'Nee'],
+      ['Achterwand', offerteData?.achterWand ? 'Ja' : 'Nee']
+    ];
+  
+    // Add the table to the PDF
+    doc.autoTable({
+      startY: 20, // Starting Y position for the table
+      head: [['Kenmerk', 'Waarde']],
+      body: data,
+      theme: 'grid',
+      headStyles: { fillColor: [22, 160, 133] }, // Example styling for table header
+      styles: { font: 'Helvetica', fontSize: 12 }
+    });
+  
+    // Add the price below the table
+    const finalY = doc.lastAutoTable.finalY + 10;
+    doc.setFont('Helvetica', 'bold');
+    doc.text(`Prijs: ${formatter.format(offerteData.prijs)}`, 10, finalY);
+  
     // Generate the PDF and trigger the download
-    doc.save('sample.pdf');
+    doc.save(`offerte - ${new Date().toLocaleDateString()}.pdf`);
   };
 
   return (
     <>
     <Header/>
-    <div className='h-screen w-full bg-gray-100 mt-20 p-4'>
-      <div className="container mx-auto border bg-white min-w-fit w-1/2 p-8">
+    <div className='h-screen w-full mt-20 p-4 bg-gradient-to-b from-white to-blue-100'>
+      <div className="container mx-auto border bg-white min-w-fit w-1/2 p-8 rounded-md shadow-md">
         <h1 className="text-3xl font-bold mb-4">Uw Offerte</h1>
         {offerteData ? (
           <div className='flex flex-col gap-2'>

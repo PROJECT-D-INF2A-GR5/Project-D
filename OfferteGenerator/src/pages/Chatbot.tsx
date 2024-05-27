@@ -242,10 +242,10 @@ function Chatbot() {
   }, [messages]);
 
   return (
-    <>
+    <div className='pt-8 '>
     <Header/>
-    <div className="App w-screen h-screen flex justify-center items-center bg-gray-100 mt-8">
-      <div style={{ position:"relative", height: "600px", width: "700px"  }}>
+    <div className="App w-full h-screen flex justify-center items-center bg-gradient-to-b from-white to-blue-100 overflow-hidden">
+      <div style={{ position:"relative", height: "600px", width: "900px"  }} className='shadow-md rounded-md'>
         <MainContainer>
           <ChatContainer>       
             <MessageList
@@ -272,7 +272,7 @@ function Chatbot() {
         </MainContainer>
       </div>
     </div>
-    </>
+    </div>
   )
 }
 
