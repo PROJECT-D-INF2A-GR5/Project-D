@@ -30,15 +30,18 @@ const API_KEY = "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";
 // "Explain things like you would to a 10 year old learning how to code."
 const systemMessage = { //  Explain things like you're talking to a software professional with 5 years of experience.
   "role": "system", "content": `Spreek alleen nederlands, en beantwoord alleen vragen over keukenbladen en offertes. En beantwoord in 2/3 zinnen maximum.
-  Zodra de gebruiker zegt "ik wil een offerte" zal de chatbot vragen stellen over het keukenblad en een offerte genereren. Dit zijn de benodigde variablen:
+  Zodra de gebruiker zegt "ik wil een offerte" zal de chatbot vragen stellen over het keukenblad en een offerte genereren. 
+  
+  Dit zijn de benodigde variablen:
+
   Welk van de volgende materialen wilt u gebruiken? (Noble Desiree Grey Matt, Noble Carrara Verzoet, Taurus Terazzo White Verzoet, Taurus Terazzo Black, Glencoe Verzoet)
   Wat is de lengte van het keukenblad in m?
   Wat is de breedte van het keukenblad in m?
   Wilt u een spatrand? (Ja/Nee)
   Wilt u een vensterbank? (Ja/Nee)
   Hoeveel boorgaten wilt u? (0-3)
-  Wilt u een WCD uitsparing? (Ja/Nee)
-  Wilt u een randafwerking? (Ja/Nee)
+  Wilt u een WCD (contactdoos)? (Ja/Nee)
+  Wilt u een randafwerking? (Ja/Nee) 
   Wilt u een wasbak? (Ja/Nee)
   Wilt u een zeepdispenser? (Ja/Nee)
   Wilt u een achterwand? (Ja/Nee)
@@ -251,7 +254,7 @@ function Chatbot() {
             <MessageList
                 
               scrollBehavior="smooth" 
-              typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
+              typingIndicator={isTyping ? <TypingIndicator content="LLM is aan het denken..." /> : null}
             >
               {messages.map((message:any, i:any) => {
                 //console.log(message)

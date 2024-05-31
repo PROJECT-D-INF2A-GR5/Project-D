@@ -73,7 +73,7 @@ const OffertePage: React.FC = () => {
       ['Breedte', offerteData?.breedte || ''],
       ['Spatrand', offerteData?.spatrand ? 'Ja' : 'Nee'],
       ['Vensterbank', offerteData?.vensterbank ? 'Ja' : 'Nee'],
-      ['Boorgaten', offerteData?.boorGaten || ''],
+      ['Boorgaten', offerteData?.boorGaten || '0'],
       ['WCD', offerteData?.WCD ? 'Ja' : 'Nee'],
       ['Randafwerking', offerteData?.randAfwerking ? 'Ja' : 'Nee'],
       ['Wasbak', offerteData?.Wasbak ? 'Ja' : 'Nee'],

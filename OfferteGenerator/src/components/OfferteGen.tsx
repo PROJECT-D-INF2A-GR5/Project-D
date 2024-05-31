@@ -25,7 +25,7 @@ const OfferteGen: React.FC = () => {
     breedte: 1,
     spatrand: false,
     vensterbank: false,
-    boorGaten: 1,
+    boorGaten: 0,
     WCD: false,
     randAfwerking: false,
     Wasbak: false,
@@ -153,37 +153,43 @@ const OfferteGen: React.FC = () => {
 
         <div className='flex-col flex gap-4'>
         <h2 className='text-lg font-semibold'>Hoeveel boor gaten heeft het keukenblad nodig?</h2>
-            <label>
-              Boor Gaten:
-              <select value={formData.boorGaten} onChange={(e) => setFormData({ ...formData, boorGaten: Number(e.target.value) })}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </label>
+        {formData.materiaal !== "Taurus Terazzo White Verzoet" ? 
+        (
+          <label>
+          Boor Gaten:
+          <select value={formData.boorGaten} onChange={(e) => setFormData({ ...formData, boorGaten: Number(e.target.value) })}>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        ):
+        ( <p>Geen boor gaten mogelijk.</p>)}
+
         </div>
 
       )}
 
       {currForm === 4 && (
-
         <div className='flex-col flex gap-4'>
         <h2 className='text-lg font-semibold'>Wilt u een contactdoos toevoegen?</h2>
-              <label className='flex gap-2 items-center'>
-
+        {formData.materiaal !== "Taurus Terazzo White Verzoet" && formData.materiaal !== "Glencoe Verzoet" ? 
+             ( <label className='flex gap-2 items-center'>
                 <Switch spanText='Een WCD toegevoegd aan het keukenblad.' toggleValue={formData.WCD} onToggle={() => setFormData({ ...formData, WCD: !formData.WCD })} />
-              </label>
+              </label> )
+         : ( <p>Geen WCD mogelijk.</p>)}
         </div>
-
       )}
+      
 
       {currForm === 5 && (
           <div className='flex-col flex gap-4'>
             <h2 className='text-lg font-semibold'>Wilt u randafwerking toevoegen aan het keukenblad?</h2>
-            <label className='flex gap-2 items-center'>
-
+            {formData.materiaal !== "Noble Desiree Grey Matt" ? 
+            (<label className='flex gap-2 items-center'>
             <Switch spanText='Keukenblad randafwerking toegevoegd.' toggleValue={formData.randAfwerking} onToggle={() => setFormData({ ...formData, randAfwerking: !formData.randAfwerking })} />
-            </label>
+            </label>):( <p>Geen randafwerking mogelijk.</p>)}
           </div>
 
       )}
