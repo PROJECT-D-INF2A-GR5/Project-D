@@ -1,19 +1,14 @@
-# React TypeScript Web Application
+# Bliss Digital OfferteGenerator
 
 ## Overview
 
-This is a React web application built with TypeScript. The project aims to provide a scalable and maintainable architecture for developing web applications using modern front-end technologies.
+This is a React web application built with TypeScript and Vite.
 
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Development](#development)
-- [Building for Production](#building-for-production)
-- [Running Tests](#running-tests)
-- [Folder Structure](#folder-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Prerequisites
 
@@ -28,21 +23,19 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/your-username/your-repo-name.git
+    git clone https://github.com/PROJECT-D-INF2A-GR5/Project-D.git
     ```
 
 2. Navigate to the project directory:
 
     ```sh
-    cd your-repo-name
+    cd OfferteGenerator
     ```
 
 3. Install the dependencies:
 
     ```sh
     npm install
-    # or
-    yarn install
     ```
 
 ## Development
@@ -50,6 +43,5 @@ Before you begin, ensure you have met the following requirements:
 To start the development server, run:
 
 ```sh
-npm start
-# or
-yarn start
+npm run dev
+```
