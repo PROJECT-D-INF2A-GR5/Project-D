@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000'; // TODO: vervangen met de URL van de API
+const API_URL = 'http://127.0.0.1:5000';
 
 export const getConversation = async (conversation: number) => {
   try {
@@ -21,3 +21,13 @@ export const saveConersation = async (name: string, description?: string) => {
     throw error;
   }
 };
+
+export const testDB = async (db_type: string) => {
+    try {
+      const response = await axios.get(`${API_URL}/testdb/${db_type}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  };
