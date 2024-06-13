@@ -15,7 +15,7 @@ This is a React web application built with TypeScript and Vite.
 Before you begin, ensure you have met the following requirements:
 
 - [Node.js](https://nodejs.org/en/) (version 14.x or later)
-- [npm](https://www.npmjs.com/) (version 6.x or later) or [yarn](https://yarnpkg.com/) (version 1.x or later)
+- [npm](https://www.npmjs.com/) (version 6.x or later)
 - [Git](https://git-scm.com/)
 
 ## Installation
