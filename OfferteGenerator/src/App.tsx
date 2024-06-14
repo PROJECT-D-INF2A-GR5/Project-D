@@ -5,11 +5,15 @@ import Homepage from './pages/Homepage'
 import OffertePage from './pages/OffertePage'
 import Chatbot from './pages/Chatbot'
 import OfferteGenPage from './pages/OfferteGenPage'
-import { testDB } from './api'
+import { getUserId } from './cookie'
 
 function App() {
 
-  testDB('postgresql').then(data => console.log(data))
+  // Call initializeCookie when the page loads
+  window.onload = function() {
+    getUserId();
+    // Additional initialization code
+  };
 
   return (
     <Router>
