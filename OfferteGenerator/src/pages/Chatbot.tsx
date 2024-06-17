@@ -80,6 +80,7 @@ function Chatbot() {
       const allMessages = [...newMessages, chatBotReply];
       setMessages(allMessages);
       setIsTyping(false);
+      
     });
   };
 
