@@ -110,6 +110,7 @@ const OffertePage: React.FC = () => {
           <div className='flex flex-col gap-2'>
             <h2 className="text-xl font-semibold">Offerte details</h2>
             <p>Materiaal: {offerteData.materiaal}</p>
+            <p>Oppervlakte : {offerteData.lengte * offerteData.breedte} m&#178;</p>
             
             <p  className='flex gap-2' >Spatrand: {offerteData.spatrand ? 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 text-green-700">

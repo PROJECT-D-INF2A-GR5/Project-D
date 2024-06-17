@@ -38,6 +38,8 @@ const OfferteGen: React.FC = () => {
   const [currForm, setCurrForm] = useState<number>(0);
   const maxForm = 9;
   const navigate = useNavigate();
+  const [spatrandLengte, setSpatrandLengte] = useState<number>(0);
+  const [lengteVensterbank, setLengteVensterbank] = useState<number>(0);
   
 
   const generatePrice = (data: KeukenbladFormData) => {
@@ -131,8 +133,21 @@ const OfferteGen: React.FC = () => {
       {currForm === 1 && (
         <div className='flex-col flex gap-4'>
           <h2 className='text-lg font-semibold'>Wilt u een spatrand toevoegen?</h2>
-          <label className='flex gap-2 items-center'>
+          <label className='flex flex-col gap-2 justify-center'>
           <Switch spanText='Een spatrand toegevoegd aan het keukenblad.' toggleValue={formData.spatrand} onToggle={() => setFormData({ ...formData, spatrand: !formData.spatrand })} />
+          {formData.spatrand && 
+            <div>
+            <p>Lengte spatrand (mm):</p>
+            <input 
+                    type='number' 
+                    step='0.1' 
+                    className='border-2 rounded-md px-1' 
+                    value={spatrandLengte}
+                    onChange={(e) => setSpatrandLengte(parseFloat(e.target.value))}
+                  />
+            </div>
+          }
+
           </label>
         </div>
 
@@ -146,6 +161,19 @@ const OfferteGen: React.FC = () => {
 
               <Switch spanText='Een vensterbank toegevoegd aan het keukenblad.' toggleValue={formData.vensterbank} onToggle={() => setFormData({ ...formData, vensterbank: !formData.vensterbank })} />
               </label>
+              {formData.vensterbank &&
+                <div>
+                <p>Lengte vensterbank (mm):</p>
+                <input 
+                  type='number' 
+                  step='0.1' 
+                  className='border-2 rounded-md px-1' 
+                  value={lengteVensterbank}
+                  onChange={(e) => setLengteVensterbank(parseFloat(e.target.value))}
+                />
+                </div>
+
+              }
           </div>
       )}
 

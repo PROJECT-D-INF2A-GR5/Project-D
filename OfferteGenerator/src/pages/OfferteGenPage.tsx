@@ -8,7 +8,7 @@ const OfferteGenPage = () => {
     const navigate = useNavigate();
 
   return (
-    <div className='flex flex-col items-center justify-center w-full bg-gradient-to-b from-white to-blue-100 h-screen'>
+    <div className='flex flex-col items-center justify-center w-full bg-gradient-to-b from-white to-blue-100 min-h-screen'>
     <Header/>
     <OfferteGen/>
     <div className=' absolute right-14 bottom-10 p-4 rounded-full bg-white cursor-pointer'>
