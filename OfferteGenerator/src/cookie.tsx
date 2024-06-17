@@ -1,4 +1,4 @@
-import { getMaxId, initializeUser } from './api';
+import { initializeUser } from './api';
 
 export function setCookie(name: string, value: string, days: number) {
     const date = new Date();
@@ -18,17 +18,16 @@ export function getCookie(name: string): string {
     return '';
 }
 
-export async function getUserId(): Promise<string> {
+export async function getUserId() {
     const userIdKey = 'userId';
     let userId = getCookie(userIdKey);
+    let userIdNew;
 
     if (!userId) {
-        //call the API to get the user id getMaxId
-        userId = await getMaxId();
-        initializeUser(userId);
-        
-        setCookie(userIdKey, userId, 1);  // Set cookie for 30 days (adjust as needed)
+        //call the API to get the user id and create the user in the database
+        userIdNew = await initializeUser();
+        setCookie(userIdKey, userIdNew, 1);  // Set cookie for 1 day
+        return userIdNew;
     }
-
     return userId;
 }

@@ -34,19 +34,9 @@ export const postMessage = async (user_id: string, userMessage: string) => {
   }
 };
 
-export const getMaxId = async () => {
+export const initializeUser = async () => {
   try {
-    const response = await axios.get(`${API_URL}/user/get_max_id`);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error;
-  }
-};
-
-export const initializeUser = async (user_id : string) => {
-  try {
-    const response = await axios.post(`${API_URL}/user/${user_id}`);
+    const response = await axios.get(`${API_URL}/user`);
     return response.data;
   } catch (error) {
     console.error('Error fetching data:', error);
