@@ -6,8 +6,15 @@ import OffertePage from './pages/OffertePage'
 import Chatbot from './pages/Chatbot'
 import OfferteGenPage from './pages/OfferteGenPage'
 import OffertePageTest from './pages/OffertePageTest'
+import { getUserId } from './cookie'
 
 function App() {
+
+  // Call initializeCookie when the page loads
+  window.onload = function() {
+    getUserId();
+    // Additional initialization code
+  };
 
   return (
     <Router>
