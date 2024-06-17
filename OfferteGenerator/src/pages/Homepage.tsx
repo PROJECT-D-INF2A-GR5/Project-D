@@ -1,5 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
+import { postMessage } from '../api';
+import { getUserId } from '../cookie';
+
 
 const Homepage = () => {
   const navigate = useNavigate();
