@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage'
 import OffertePage from './pages/OffertePage'
 import Chatbot from './pages/Chatbot'
 import OfferteGenPage from './pages/OfferteGenPage'
+import OffertePageTest from './pages/OffertePageTest'
 import { getUserId } from './cookie'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/offerte" element={<OffertePage />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="offerte-gen" element={<OfferteGenPage />} />
+        <Route path="/test" element={<OffertePageTest/>} />
       </Routes>
     </Router>
   )
